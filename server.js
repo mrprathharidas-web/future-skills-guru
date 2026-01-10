@@ -80,3 +80,8 @@ app.post('/verify-payment', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Payment server running on port ${PORT}`);
 });
+
+// Root route to avoid "Cannot GET /" on Render or browsers visiting the host root.
+app.get('/', (req, res) => {
+  res.send(`<html><head><title>FutureSkills Payments</title></head><body><h1>FutureSkills Payment Server</h1><p>Use the endpoints <code>/create-order</code> and <code>/verify-payment</code>.</p></body></html>`);
+});
